@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace Vereinsverwaltung.ViewModel;
 
-public class MemberViewModel : ViewModelBase
+public partial class MemberViewModel : ViewModelBase
 {
+    [ObservableProperty]
+    private IEnumerable<Member> members;
 
+    public MemberViewModel(DataAccessor dataAccessor, 
+        ResourceLoader resourceLoader) : base(dataAccessor, resourceLoader)
+    {
+
+    }
+
+    [RelayCommand]
+    private async Task LoadMembers()
+    {
+        Members = await dataAccessor.Members.Value;
+    }
 }

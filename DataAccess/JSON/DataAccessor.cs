@@ -48,9 +48,35 @@ public class DataAccessor
             json = await r.ReadToEndAsync();
         }
 
-        var member = JsonConvert.DeserializeObject<List<Member>>(json);
+        var members = JsonConvert.DeserializeObject<List<Member>>(json);
 
-        return member;
+        // example data which can be removed on release ._.
+        if (members == null || members.Count == 0)
+        {
+            members = new List<Member>()
+            {
+                new()
+                {
+                    BirthDate = DateTime.Now,
+                    Contribution = 5,
+                    EmploymentType = EmploymentType.Student,
+                    FirstName = "Test1First",
+                    LastName = "Test1Last",
+                    IBAN = "123123123",
+                },
+                new()
+                {
+                    BirthDate = DateTime.Now,
+                    Contribution = 10,
+                    EmploymentType = EmploymentType.FullTimeEmployee,
+                    FirstName = "tEsT2First",
+                    LastName = "tEsT2Last",
+                    IBAN = "456456456",
+                }
+            };
+        }
+
+        return members;
     }
 
     /// <summary>

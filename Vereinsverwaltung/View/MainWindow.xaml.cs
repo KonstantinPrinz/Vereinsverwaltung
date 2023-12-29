@@ -20,5 +20,6 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         this.InitializeComponent();
+        RootGrid.DataContext = App.ServiceProvider.GetRequiredService<MainWindowViewModel>();
     }
 }

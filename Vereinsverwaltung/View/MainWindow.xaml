@@ -5,10 +5,42 @@
     xmlns:local="using:Vereinsverwaltung"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodel="using:Vereinsverwaltung.ViewModel" 
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:Interactions="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:viewmodel="using:Vereinsverwaltung.ViewModel"
     mc:Ignorable="d">
     <Grid
+        x:Name="RootGrid"
         d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}">
-        <TextBlock>MAIN WINDOW</TextBlock>
+        <NavigationView
+            Header="{Binding NavigationService.CurrentView.NavigationDisplayHeader}"
+            Content="{Binding NavigationService.CurrentView, Converter={StaticResource ViewModelToViewConverter}}"
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="False">
+            <NavigationView.MenuItems>
+                <NavigationViewItem
+                    Icon="Home"
+                    Content="Dashboard">
+                    <Interactivity:Interaction.Behaviors>
+                        <Interactions:EventTriggerBehavior
+                            EventName="Tapped">
+                            <Interactions:InvokeCommandAction Command="{Binding NavigateToDashboardViewCommand}"/>
+                        </Interactions:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    Icon="People"
+                    Content="Mitglieder">
+                    <Interactivity:Interaction.Behaviors>
+                        <Interactions:EventTriggerBehavior
+                                EventName="Tapped">
+                            <Interactions:EventTriggerBehavior.Actions>
+                                <Interactions:InvokeCommandAction Command="{Binding NavigateToMemberViewCommand}"/>
+                            </Interactions:EventTriggerBehavior.Actions>
+                        </Interactions:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+        </NavigationView>
     </Grid>
 </Window>

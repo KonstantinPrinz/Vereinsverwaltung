@@ -10,7 +10,7 @@ using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml;
 
 namespace Vereinsverwaltung.View.Converter;
-public class ViewModelToViewConverter : MarkupExtension, IValueConverter
+public class ViewModelToViewConverter : IValueConverter
 {
     private static readonly Dictionary<Type, Type> pairs = new()
         {

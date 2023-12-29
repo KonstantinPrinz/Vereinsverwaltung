@@ -7,10 +7,78 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:viewmodel="using:Vereinsverwaltung.ViewModel" 
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:Interactions="using:Microsoft.Xaml.Interactions.Core"
     d:DataContext="{d:DesignInstance Type=viewmodel:MemberViewModel}"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid>
-        <TextBlock>MEMBER VIEW</TextBlock>
-    </Grid>
+    <RelativePanel
+        Margin="10">
+        <Interactivity:Interaction.Behaviors>
+            <Interactions:EventTriggerBehavior
+                    EventName="Loaded">
+                <Interactions:InvokeCommandAction Command="{Binding LoadMembersCommand}"/>
+            </Interactions:EventTriggerBehavior>
+        </Interactivity:Interaction.Behaviors>
+        <ListBox
+            RelativePanel.AlignTopWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.Above="ButtonBar"
+            ItemsSource="{Binding Members}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        ColumnSpacing="25">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Name"/>
+                        <TextBlock Grid.Column="1" Grid.Row="0">
+                            <Run Text="{Binding FirstName}"></Run>
+                            <Run Text=" "></Run>
+                            <Run Text="{Binding LastName}"></Run>
+                        </TextBlock>
+
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Geburtstag"/>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding BirthDate}"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Beitrag"/>
+                        <TextBlock  Grid.Column="1" Grid.Row="2">
+                            <Run Text="{Binding Contribution}"></Run>
+                            <Run Text=" €"></Run>
+                        </TextBlock>
+
+                        <TextBlock Grid.Column="0" Grid.Row="3" Text="Beschäftigung"/>
+                        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding EmploymentType}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel
+            x:Name="ButtonBar"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignBottomWithPanel="True"
+            VerticalAlignment="Bottom"
+            Margin="10"
+            Orientation="Horizontal"
+            Spacing="25">
+            <Button
+                Content="Neues Mitglied"
+                Style="{StaticResource AccentButtonStyle}">
+            </Button>
+            <Button
+                Content="Mitglied Löschen"
+                Style="{StaticResource AccentButtonStyle}">
+            </Button>
+        </StackPanel>
+    </RelativePanel>
 </Page>

@@ -8,5 +8,8 @@ namespace Vereinsverwaltung.ViewModel;
 
 public class DashboardViewModel : ViewModelBase
 {
-
+    public DashboardViewModel(DataAccessor dataAccessor, 
+        ResourceLoader resourceLoader) : base(dataAccessor, resourceLoader)
+    {
+    }
 }

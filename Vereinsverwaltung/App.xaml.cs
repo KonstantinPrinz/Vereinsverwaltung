@@ -48,7 +48,10 @@ public partial class App : Application
         services.AddSingleton<MainWindowViewModel>();
         #endregion ViewModel
 
+        services.AddSingleton<DataAccessor>();
         services.AddSingleton<ViewModelToViewConverter>();
+        services.AddSingleton<NavigationService>();
+        services.AddSingleton<ResourceLoader>();
         services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
 
         ServiceProvider = services.BuildServiceProvider();
