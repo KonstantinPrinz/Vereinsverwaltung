@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vereinsverwaltung.ViewModel;
 
-public class EmployeeViewModel : ViewModelBase
+public class MemberViewModel : ViewModelBase
 {
 
 }

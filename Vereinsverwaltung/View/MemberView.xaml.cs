@@ -15,9 +15,9 @@ using Windows.Foundation.Collections;
 
 namespace Vereinsverwaltung.View;
 
-public sealed partial class EmployeeView : Page
+public sealed partial class MemberView : Page
 {
-    public EmployeeView()
+    public MemberView()
     {
         this.InitializeComponent();
     }

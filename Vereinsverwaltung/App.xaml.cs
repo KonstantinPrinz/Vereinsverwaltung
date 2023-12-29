@@ -38,12 +38,12 @@ public partial class App : Application
 
         #region View
         services.AddSingleton<MainWindow>();
-        services.AddTransient<EmployeeView>();
+        services.AddTransient<MemberView>();
         services.AddTransient<DashboardView>();
         #endregion
 
         #region ViewModel
-        services.AddTransient<EmployeeViewModel>();
+        services.AddTransient<MemberViewModel>();
         services.AddTransient<DashboardViewModel>();
         services.AddSingleton<MainWindowViewModel>();
         #endregion ViewModel

@@ -14,7 +14,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="View\DashboardView.xaml" />
-    <None Remove="View\EmployeeView.xaml" />
+    <None Remove="View\MemberView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,7 +44,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\EmployeeView.xaml">
+    <Page Update="View\MemberView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

@@ -16,7 +16,7 @@ public class ViewModelToViewConverter : MarkupExtension, IValueConverter
         {
             {typeof(MainWindowViewModel),typeof(MainWindow)},
             {typeof(DashboardViewModel),typeof(DashboardView)},
-            {typeof(EmployeeViewModel),typeof(EmployeeView)},
+            {typeof(MemberViewModel),typeof(MemberView)},
         };
 
     public object Convert(object value, Type targetType, object parameter, string language)
