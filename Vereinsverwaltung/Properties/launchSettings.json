@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Vereinsverwaltung (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Vereinsverwaltung (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
