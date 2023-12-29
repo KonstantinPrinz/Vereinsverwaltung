@@ -44,6 +44,9 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="View\MemberView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
