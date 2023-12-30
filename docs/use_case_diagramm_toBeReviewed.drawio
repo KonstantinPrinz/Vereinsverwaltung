@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2023-12-30T14:04:18.762Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="LXw309hsC-O0KrjsQrX7" version="22.1.16" type="device">
+  <diagram name="Seite-1" id="QP7oHoSzBWz8RqSxICpP">
+    <mxGraphModel dx="1434" dy="746" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="LC5mWiwYeEPQYET0ECP--1" value="Vereinsverwaltung" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=110;height=37;" parent="1" vertex="1">
+          <mxGeometry x="230" y="40" width="520" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--2" value="Mitglied erfassen" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="274" y="120" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--4" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="LC5mWiwYeEPQYET0ECP--3" target="LC5mWiwYeEPQYET0ECP--2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--6" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="LC5mWiwYeEPQYET0ECP--3" target="LC5mWiwYeEPQYET0ECP--5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="LC5mWiwYeEPQYET0ECP--3" target="LC5mWiwYeEPQYET0ECP--8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--13" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="LC5mWiwYeEPQYET0ECP--3" target="LC5mWiwYeEPQYET0ECP--12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--17" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="LC5mWiwYeEPQYET0ECP--3" target="LC5mWiwYeEPQYET0ECP--14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sATDczV30odTQPf0jmUU-2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="LC5mWiwYeEPQYET0ECP--3" target="LC5mWiwYeEPQYET0ECP--10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sATDczV30odTQPf0jmUU-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="LC5mWiwYeEPQYET0ECP--3" target="LC5mWiwYeEPQYET0ECP--15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--3" value="Benutzer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="400" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--5" value="SEPA-Verfahren einstellen" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="310" y="220" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--11" value="&amp;lt;&amp;lt; extend &amp;gt;&amp;gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;" parent="1" target="LC5mWiwYeEPQYET0ECP--10" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="348" as="sourcePoint" />
+            <mxPoint x="514" y="173" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--8" value="Kontostand des Vereins einsehen" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="260" y="310" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--10" value="Zu - und Abgänge vom Konto in anzugebenen Zeiträumen einsehen" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="530" y="295" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--12" value="Jahresbilanz erstellen" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="274" y="400" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--16" value="&amp;lt;&amp;lt; include &amp;gt;&amp;gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;" parent="1" source="LC5mWiwYeEPQYET0ECP--14" target="LC5mWiwYeEPQYET0ECP--15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--14" value="Beitragsstaffelung konfigurieren" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="250" y="500" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LC5mWiwYeEPQYET0ECP--15" value="Aktuelle Beitragsstaffelung einsehen" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="540" y="500" width="140" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
