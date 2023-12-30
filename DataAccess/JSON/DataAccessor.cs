@@ -57,6 +57,7 @@ public class DataAccessor
             {
                 new()
                 {
+                    Id = Guid.NewGuid(),
                     BirthDate = DateTime.Now,
                     Contribution = 5,
                     EmploymentType = EmploymentType.Student,
@@ -66,6 +67,7 @@ public class DataAccessor
                 },
                 new()
                 {
+                    Id = Guid.NewGuid(),
                     BirthDate = DateTime.Now,
                     Contribution = 10,
                     EmploymentType = EmploymentType.FullTimeEmployee,
@@ -82,7 +84,7 @@ public class DataAccessor
     /// <summary>
     /// Serializes the members to the applications base directory as JSON.
     /// </summary>
-    public async void SetMembers(List<Member> members)
+    public async Task SetMembers(List<Member> members)
     {
         if (!Directory.Exists(dataPath))
         {

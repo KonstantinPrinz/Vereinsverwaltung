@@ -11,6 +11,7 @@
     mc:Ignorable="d">
     <Grid
         x:Name="RootGrid"
+        Loaded="RootGrid_Loaded"
         d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}">
         <NavigationView
             Header="{Binding NavigationService.CurrentView.NavigationDisplayHeader}"

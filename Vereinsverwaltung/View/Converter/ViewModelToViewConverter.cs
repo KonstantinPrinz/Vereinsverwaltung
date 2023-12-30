@@ -17,6 +17,8 @@ public class ViewModelToViewConverter : IValueConverter
             {typeof(MainWindowViewModel),typeof(MainWindow)},
             {typeof(DashboardViewModel),typeof(DashboardView)},
             {typeof(MemberViewModel),typeof(MemberView)},
+            {typeof(CreateMemberViewModel),typeof(CreateMemberView)},
+            {typeof(ConfirmActionViewModel),typeof(ConfirmActionView)},
         };
 
     public object Convert(object value, Type targetType, object parameter, string language)

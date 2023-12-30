@@ -13,6 +13,8 @@
     <DisableXbfLineInfo>False</DisableXbfLineInfo>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="View\ConfirmActionView.xaml" />
+    <None Remove="View\CreateMemberView.xaml" />
     <None Remove="View\DashboardView.xaml" />
     <None Remove="View\MemberView.xaml" />
   </ItemGroup>
@@ -46,6 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\ConfirmActionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\CreateMemberView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\MemberView.xaml">

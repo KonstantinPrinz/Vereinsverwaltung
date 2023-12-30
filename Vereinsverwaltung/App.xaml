@@ -12,6 +12,7 @@
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
             <converter:ViewModelToViewConverter x:Key="ViewModelToViewConverter"/>
+            <converter:DateTimeDateTimeOffsetConverter x:Key="DateTimeDateTimeOffsetConverter"/>
             <!-- Other app resources here -->
         </ResourceDictionary>
     </Application.Resources>

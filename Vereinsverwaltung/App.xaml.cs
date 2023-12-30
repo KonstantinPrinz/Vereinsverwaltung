@@ -40,18 +40,23 @@ public partial class App : Application
         services.AddSingleton<MainWindow>();
         services.AddTransient<MemberView>();
         services.AddTransient<DashboardView>();
+        services.AddTransient<CreateMemberView>();
+        services.AddTransient<ConfirmActionView>();
         #endregion
 
         #region ViewModel
         services.AddTransient<MemberViewModel>();
         services.AddTransient<DashboardViewModel>();
         services.AddSingleton<MainWindowViewModel>();
+        services.AddTransient<CreateMemberViewModel>();
+        services.AddTransient<ConfirmActionViewModel>();
         #endregion ViewModel
 
         services.AddSingleton<DataAccessor>();
         services.AddSingleton<ViewModelToViewConverter>();
         services.AddSingleton<NavigationService>();
         services.AddSingleton<ResourceLoader>();
+        services.AddSingleton<IDialogService, DialogService>();
         services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
 
         ServiceProvider = services.BuildServiceProvider();

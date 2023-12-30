@@ -24,6 +24,7 @@
             RelativePanel.AlignTopWithPanel="True"
             RelativePanel.AlignLeftWithPanel="True"
             RelativePanel.Above="ButtonBar"
+            SelectedItem="{Binding SelectedMember, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             ItemsSource="{Binding Members}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -38,26 +39,30 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Name"/>
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" FontWeight="Bold"/>
                         <TextBlock Grid.Column="1" Grid.Row="0">
                             <Run Text="{Binding FirstName}"></Run>
                             <Run Text=" "></Run>
                             <Run Text="{Binding LastName}"></Run>
                         </TextBlock>
 
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Geburtstag"/>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Geburtstag" FontWeight="Bold"/>
                         <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding BirthDate}"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Beitrag"/>
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Beitrag" FontWeight="Bold"/>
                         <TextBlock  Grid.Column="1" Grid.Row="2">
                             <Run Text="{Binding Contribution}"></Run>
                             <Run Text=" €"></Run>
                         </TextBlock>
 
-                        <TextBlock Grid.Column="0" Grid.Row="3" Text="Beschäftigung"/>
+                        <TextBlock Grid.Column="0" Grid.Row="3" Text="Beschäftigung" FontWeight="Bold"/>
                         <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding EmploymentType}"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="4" Text="IBAN" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding IBAN}"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -73,10 +78,13 @@
             Spacing="25">
             <Button
                 Content="Neues Mitglied"
+                Command="{Binding CreateMemberCommand}"
                 Style="{StaticResource AccentButtonStyle}">
             </Button>
             <Button
                 Content="Mitglied Löschen"
+                IsEnabled="{Binding IsMemberSelected}"
+                Command="{Binding DeleteMemberCommand}"
                 Style="{StaticResource AccentButtonStyle}">
             </Button>
         </StackPanel>
