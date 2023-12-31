@@ -13,6 +13,6 @@ public class Account
 
     public IEnumerable<Entry> GetEntriesInDateRange(DateTime begin, DateTime end)
     {
-        return Entries.Where(e => e.TimeStamp.Ticks >= end.Ticks && e.TimeStamp.Ticks <= begin.Ticks);
+        return Entries.Where(e => e.TimeStamp.Ticks <= end.Ticks && e.TimeStamp.Ticks >= begin.Ticks);
     }
 }

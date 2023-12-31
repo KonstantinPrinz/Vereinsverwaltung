@@ -13,6 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
             <converter:ViewModelToViewConverter x:Key="ViewModelToViewConverter"/>
             <converter:DateTimeDateTimeOffsetConverter x:Key="DateTimeDateTimeOffsetConverter"/>
+            <converter:DoubleToRedGreenBrushConverter x:Key="DoubleToRedGreenBrushConverter"/>
             <!-- Other app resources here -->
         </ResourceDictionary>
     </Application.Resources>

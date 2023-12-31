@@ -41,6 +41,18 @@
                         </Interactions:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
                 </NavigationViewItem>
+                <NavigationViewItem
+                    Icon="Shop"
+                    Content="Konto">
+                    <Interactivity:Interaction.Behaviors>
+                        <Interactions:EventTriggerBehavior
+                            EventName="Tapped">
+                            <Interactions:EventTriggerBehavior.Actions>
+                                <Interactions:InvokeCommandAction Command="{Binding NavigateToAccountViewCommand}"/>
+                            </Interactions:EventTriggerBehavior.Actions>
+                        </Interactions:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
         </NavigationView>
     </Grid>

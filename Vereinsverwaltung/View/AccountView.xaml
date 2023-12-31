@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Vereinsverwaltung.View.AccountView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Vereinsverwaltung.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:viewmodel="using:Vereinsverwaltung.ViewModel"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
+    xmlns:Interactions="using:Microsoft.Xaml.Interactions.Core"
+    d:DataContext="{d:DesignInstance Type=viewmodel:AccountViewModel}"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Interactivity:Interaction.Behaviors>
+        <Interactions:EventTriggerBehavior
+            EventName="Loaded">
+            <Interactions:InvokeCommandAction Command="{Binding LoadAccountCommand}"/>
+        </Interactions:EventTriggerBehavior>
+    </Interactivity:Interaction.Behaviors>
+    <Grid
+        Padding="25">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel
+            Grid.Column="0"
+            Orientation="Vertical">
+            <TextBlock 
+                Text="Kontostand"
+                Style="{StaticResource HeaderTextBlockStyle}">
+            </TextBlock>
+            <TextBlock 
+                Style="{StaticResource TitleTextBlockStyle}">
+                <Run Text="{Binding Balance}"></Run>
+                <Run Text="€"></Run>
+            </TextBlock>
+        </StackPanel>
+
+        <RelativePanel
+            Grid.Column="1">
+            <TextBlock
+                x:Name="EntryHeader"
+                Text="Zu - und Abgänge"
+                RelativePanel.AlignTopWithPanel="True"
+                Style="{StaticResource HeaderTextBlockStyle}">
+            </TextBlock>
+
+            <StackPanel
+                x:Name="EntryFilterPanel"
+                RelativePanel.Below="EntryHeader"
+                Orientation="Horizontal"
+                Margin="0,10,0,10"
+                Spacing="25">
+                <CalendarDatePicker
+                    Header="Von"
+                    Date="{Binding BeginEntryFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+                        Converter={StaticResource DateTimeDateTimeOffsetConverter}}">
+                    <Interactivity:Interaction.Behaviors>
+                        <Interactions:EventTriggerBehavior
+                                EventName="DateChanged">
+                            <Interactions:InvokeCommandAction Command="{Binding DateFilterChangedCommand}"/>
+                        </Interactions:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                </CalendarDatePicker>
+                <CalendarDatePicker
+                    Header="Bis"
+                    Date="{Binding EndEntryFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+                        Converter={StaticResource DateTimeDateTimeOffsetConverter}}">
+                    <Interactivity:Interaction.Behaviors>
+                        <Interactions:EventTriggerBehavior
+                            EventName="DateChanged">
+                            <Interactions:InvokeCommandAction Command="{Binding DateFilterChangedCommand}"/>
+                        </Interactions:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                </CalendarDatePicker>
+            </StackPanel>
+            
+            <ItemsView
+                x:Name="EntryList"
+                ItemsSource="{Binding Entries}"
+                RelativePanel.Below="EntryFilterPanel"
+                SelectionMode="None">
+                <ItemsView.Layout>
+                    <StackLayout Spacing="15"/>
+                </ItemsView.Layout>
+                <ItemsView.ItemTemplate>
+                    <DataTemplate>
+                        <ItemContainer>
+                            <StackPanel
+                                Background="{Binding Value, Converter={StaticResource DoubleToRedGreenBrushConverter}}"
+                                Spacing="5"
+                                CornerRadius="10"
+                                Padding="10"
+                                Orientation="Vertical">
+                                <TextBlock 
+                                    Text="{Binding TimeStamp}"
+                                    FontSize="25"
+                                    HorizontalAlignment="Left"
+                                    Style="{StaticResource DisplayTextBlockStyle}">
+                                </TextBlock>
+                                <TextBlock
+                                    HorizontalAlignment="Right"
+                                    Style="{StaticResource HeaderTextBlockStyle}">
+                                    <Run Text="{Binding Value}"></Run>
+                                    <Run Text="€"></Run>
+                                </TextBlock>
+                            </StackPanel>
+                        </ItemContainer>
+                    </DataTemplate>
+                </ItemsView.ItemTemplate>
+            </ItemsView>
+        </RelativePanel>
+    </Grid>
+</Page>

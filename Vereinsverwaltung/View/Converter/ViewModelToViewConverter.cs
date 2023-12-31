@@ -17,6 +17,7 @@ public class ViewModelToViewConverter : IValueConverter
             {typeof(MainWindowViewModel),typeof(MainWindow)},
             {typeof(DashboardViewModel),typeof(DashboardView)},
             {typeof(MemberViewModel),typeof(MemberView)},
+            {typeof(AccountViewModel),typeof(AccountView)},
             {typeof(CreateMemberViewModel),typeof(CreateMemberView)},
             {typeof(ConfirmActionViewModel),typeof(ConfirmActionView)},
         };

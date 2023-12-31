@@ -28,4 +28,10 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         NavigationService.NavigateTo<MemberViewModel>();
     }
+
+    [RelayCommand]
+    private void NavigateToAccountView()
+    {
+        NavigationService.NavigateTo<AccountViewModel>();
+    }
 }

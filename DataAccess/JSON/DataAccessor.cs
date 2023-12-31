@@ -141,6 +141,51 @@ public class DataAccessor
                     {
                         TimeStamp = DateTime.Now.AddHours(-5),
                         Value = -25,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now,
+                        Value = 69,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddDays(-5),
+                        Value = 666,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddHours(-5),
+                        Value = -25,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now,
+                        Value = 69,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddDays(-5),
+                        Value = 666,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddHours(-5),
+                        Value = -25,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now,
+                        Value = 69,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddDays(-5),
+                        Value = 666,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddHours(-5),
+                        Value = -25,
                     }
                 }
             };
