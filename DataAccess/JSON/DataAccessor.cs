@@ -13,13 +13,16 @@ public class DataAccessor
 {
     private readonly string dataPath;
     private readonly string memberFile;
+    private readonly string accountFile;
 
     public Lazy<Task<List<Member>>> Members { get; private set; }
+    public Lazy<Task<Account>> Account { get; private set; }
 
     public DataAccessor()
     {
         dataPath = AppContext.BaseDirectory + "\\Data\\";
         memberFile = "\\members.json";
+        accountFile = "\\account.json";
 
         if (!Directory.Exists(dataPath))
         {
@@ -27,6 +30,7 @@ public class DataAccessor
         }
 
         Members = new Lazy<Task<List<Member>>>(GetMember);
+        Account = new Lazy<Task<Account>>(GetAccount);
     }
 
     /// <summary>
@@ -34,7 +38,6 @@ public class DataAccessor
     /// </summary>
     private async Task<List<Member>> GetMember()
     {
-        // var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\" + "member.json";
         var path = dataPath + memberFile;
 
         if (!File.Exists(path))
@@ -94,5 +97,115 @@ public class DataAccessor
         var json = JsonConvert.SerializeObject(members);
 
         await File.WriteAllTextAsync(dataPath + memberFile, json);
+    }
+
+    /// <summary>
+    /// Deserializes and returns the account in the applications base directory from JSON.
+    /// </summary>
+    private async Task<Account> GetAccount()
+    {
+        var path = dataPath + accountFile;
+
+        if (!File.Exists(path))
+        {
+            File.Create(path);
+        }
+
+        string json;
+        using (StreamReader r = new StreamReader(path))
+        {
+            json = await r.ReadToEndAsync();
+        }
+
+        var account = JsonConvert.DeserializeObject<Account>(json);
+
+        // example data which can be removed on release ._.
+        if (account == null || !account.Entries.Any())
+        {
+            account = new Account()
+            {
+                Balance = 420,
+                Entries = new List<Entry>()
+                {
+                    new()
+                    {
+                        TimeStamp = DateTime.Now,
+                        Value = 69,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddDays(-5),
+                        Value = 666,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddHours(-5),
+                        Value = -25,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now,
+                        Value = 69,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddDays(-5),
+                        Value = 666,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddHours(-5),
+                        Value = -25,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now,
+                        Value = 69,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddDays(-5),
+                        Value = 666,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddHours(-5),
+                        Value = -25,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now,
+                        Value = 69,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddDays(-5),
+                        Value = 666,
+                    },
+                    new()
+                    {
+                        TimeStamp = DateTime.Now.AddHours(-5),
+                        Value = -25,
+                    }
+                }
+            };
+        }
+
+        return account;
+    }
+
+    /// <summary>
+    /// Serializes the account to the applications base directory as JSON.
+    /// </summary>
+    public async Task SetAccount(Account account)
+    {
+        if (!Directory.Exists(dataPath))
+        {
+            Directory.CreateDirectory(dataPath);
+        }
+
+        var json = JsonConvert.SerializeObject(account);
+
+        await File.WriteAllTextAsync(dataPath + accountFile, json);
     }
 }

@@ -42,6 +42,7 @@ public partial class App : Application
         services.AddTransient<DashboardView>();
         services.AddTransient<CreateMemberView>();
         services.AddTransient<ConfirmActionView>();
+        services.AddTransient<AccountView>();
         #endregion
 
         #region ViewModel
@@ -50,6 +51,7 @@ public partial class App : Application
         services.AddSingleton<MainWindowViewModel>();
         services.AddTransient<CreateMemberViewModel>();
         services.AddTransient<ConfirmActionViewModel>();
+        services.AddTransient<AccountViewModel>();
         #endregion ViewModel
 
         services.AddSingleton<DataAccessor>();
