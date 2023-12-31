@@ -19,7 +19,9 @@ public class ViewModelToViewConverter : IValueConverter
             {typeof(MemberViewModel),typeof(MemberView)},
             {typeof(AccountViewModel),typeof(AccountView)},
             {typeof(CreateMemberViewModel),typeof(CreateMemberView)},
+            {typeof(CreateContributionScaleViewModel),typeof(CreateContributionScaleView)},
             {typeof(ConfirmActionViewModel),typeof(ConfirmActionView)},
+            {typeof(ContributionViewModel),typeof(ContributionView)},
         };
 
     public object Convert(object value, Type targetType, object parameter, string language)

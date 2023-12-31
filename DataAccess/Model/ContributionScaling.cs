@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 namespace DataAccess.Model;
 public class ContributionScaling
 {
-    public IEnumerable<ContributionScaleItem> Items { get; set; }
+    public IEnumerable<ContributionScaleItem> Items { get; set; } = Enumerable.Empty<ContributionScaleItem>();
 }

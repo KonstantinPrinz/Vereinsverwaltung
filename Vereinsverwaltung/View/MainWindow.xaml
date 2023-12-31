@@ -53,6 +53,18 @@
                         </Interactions:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
                 </NavigationViewItem>
+                <NavigationViewItem
+                    Icon="Calculator"
+                    Content="Beitraege">
+                    <Interactivity:Interaction.Behaviors>
+                        <Interactions:EventTriggerBehavior
+                            EventName="Tapped">
+                            <Interactions:EventTriggerBehavior.Actions>
+                                <Interactions:InvokeCommandAction Command="{Binding NavigateToContributionViewCommand}"/>
+                            </Interactions:EventTriggerBehavior.Actions>
+                        </Interactions:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
         </NavigationView>
     </Grid>

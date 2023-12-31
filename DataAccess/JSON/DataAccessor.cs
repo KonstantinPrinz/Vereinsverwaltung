@@ -46,7 +46,7 @@ public class DataAccessor
 
         if (!File.Exists(path))
         {
-            File.Create(path);
+            File.Create(path).Close();
         }
 
         string json;
@@ -57,32 +57,9 @@ public class DataAccessor
 
         var members = JsonConvert.DeserializeObject<List<Member>>(json);
 
-        // example data which can be removed on release ._.
-        if (members == null || members.Count == 0)
+        if (members == null)
         {
-            members = new List<Member>()
-            {
-                new()
-                {
-                    Id = Guid.NewGuid(),
-                    BirthDate = DateTime.Now,
-                    Contribution = 5,
-                    EmploymentType = EmploymentType.Student,
-                    FirstName = "Test1First",
-                    LastName = "Test1Last",
-                    IBAN = "123123123",
-                },
-                new()
-                {
-                    Id = Guid.NewGuid(),
-                    BirthDate = DateTime.Now,
-                    Contribution = 10,
-                    EmploymentType = EmploymentType.FullTimeEmployee,
-                    FirstName = "tEsT2First",
-                    LastName = "tEsT2Last",
-                    IBAN = "456456456",
-                }
-            };
+            members = new List<Member>();
         }
 
         return members;
@@ -112,7 +89,7 @@ public class DataAccessor
 
         if (!File.Exists(path))
         {
-            File.Create(path);
+            File.Create(path).Close();
         }
 
         string json;
@@ -133,62 +110,62 @@ public class DataAccessor
                 {
                     new()
                     {
-                        TimeStamp = DateTime.Now,
+                        TimeStamp = DateTime.Now.Date,
                         Value = 69,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddDays(-5),
+                        TimeStamp = DateTime.Now.AddDays(-5).Date,
                         Value = 666,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddHours(-5),
+                        TimeStamp = DateTime.Now.AddHours(-5).Date,
                         Value = -25,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now,
+                        TimeStamp = DateTime.Now.Date,
                         Value = 69,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddDays(-5),
+                        TimeStamp = DateTime.Now.AddDays(-5).Date,
                         Value = 666,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddHours(-5),
+                        TimeStamp = DateTime.Now.AddHours(-5).Date,
                         Value = -25,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now,
+                        TimeStamp = DateTime.Now.Date,
                         Value = 69,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddDays(-5),
+                        TimeStamp = DateTime.Now.AddDays(-5).Date,
                         Value = 666,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddHours(-5),
+                        TimeStamp = DateTime.Now.AddHours(-5).Date,
                         Value = -25,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now,
+                        TimeStamp = DateTime.Now.Date,
                         Value = 69,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddDays(-5),
+                        TimeStamp = DateTime.Now.AddDays(-5).Date,
                         Value = 666,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddHours(-5),
+                        TimeStamp = DateTime.Now.AddHours(-5).Date,
                         Value = -25,
                     }
                 }
@@ -222,7 +199,7 @@ public class DataAccessor
 
         if (!File.Exists(path))
         {
-            File.Create(path);
+            File.Create(path).Close();
         }
 
         string json;
@@ -233,36 +210,9 @@ public class DataAccessor
 
         var contributionScaling = JsonConvert.DeserializeObject<ContributionScaling>(json);
 
-        // example data which can be removed on release ._.
         if (contributionScaling == null)
         {
-            contributionScaling = new()
-            {
-                Items = new List<ContributionScaleItem>()
-                {
-                    new()
-                    {
-                        Employment = EmploymentType.Student,
-                        MinAge = 12,
-                        MaxAge = 29,
-                        Contribution = 5,
-                    },
-                    new()
-                    {
-                        Employment = EmploymentType.FullTimeEmployee,
-                        MinAge = 16,
-                        MaxAge = 29,
-                        Contribution = 10,
-                    },
-                    new()
-                    {
-                        Employment = EmploymentType.FullTimeEmployee,
-                        MinAge = 30,
-                        MaxAge = 999,
-                        Contribution = 20,
-                    },
-                }
-            };
+            contributionScaling = new ContributionScaling();
         }
 
         return contributionScaling;
