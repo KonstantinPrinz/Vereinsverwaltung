@@ -33,6 +33,7 @@ public partial class App : Application
     public App()
     {
         this.InitializeComponent();
+        this.RequestedTheme = ApplicationTheme.Dark;
 
         IServiceCollection services = new ServiceCollection();
 
@@ -43,6 +44,7 @@ public partial class App : Application
         services.AddTransient<CreateMemberView>();
         services.AddTransient<ConfirmActionView>();
         services.AddTransient<AccountView>();
+        services.AddTransient<SettingsView>();
         services.AddTransient<ContributionView>();
         services.AddTransient<CreateContributionScaleView>();
         #endregion
@@ -54,6 +56,7 @@ public partial class App : Application
         services.AddTransient<CreateMemberViewModel>();
         services.AddTransient<ConfirmActionViewModel>();
         services.AddTransient<AccountViewModel>();
+        services.AddTransient<SettingsViewModel>();
         services.AddTransient<ContributionViewModel>();
         services.AddTransient<CreateContributionScaleViewModel>();
         #endregion ViewModel

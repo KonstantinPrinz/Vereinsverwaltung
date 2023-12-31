@@ -12,8 +12,6 @@ public partial class CreateMemberViewModel : ViewModelBase
     [ObservableProperty]
     private string lastName;
     [ObservableProperty]
-    private double contribution;
-    [ObservableProperty]
     private DateTime birthDate = DateTime.Now;
     [ObservableProperty]
     private EmploymentType employment;

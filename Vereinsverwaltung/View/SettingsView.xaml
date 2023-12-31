@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Vereinsverwaltung.View.SettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Vereinsverwaltung.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:Vereinsverwaltung.ViewModel" 
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:Interactions="using:Microsoft.Xaml.Interactions.Core"
+    d:DataContext="{d:DesignInstance Type=viewmodel:SettingsViewModel}"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Interactivity:Interaction.Behaviors>
+        <Interactions:EventTriggerBehavior
+            EventName="Loaded">
+            <Interactions:InvokeCommandAction Command="{Binding LoadSettingsCommand}"/>
+        </Interactions:EventTriggerBehavior>
+    </Interactivity:Interaction.Behaviors>
+
+    <Grid
+        Margin="25">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            x:Name="AccountPanel"
+            Grid.Column="0">
+            <TextBlock
+                Text="Konto"
+                Style="{StaticResource HeaderTextBlockStyle}">
+            </TextBlock>
+            <StackPanel
+                Orientation="Horizontal"
+                Spacing="10">
+                <TextBox
+                    x:Name="IBANTextBox"
+                    Header="IBAN"
+                    Width="250"
+                    Text="{Binding Iban, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+                <Button
+                    Style="{StaticResource AccentButtonStyle}"
+                    VerticalAlignment="Bottom"
+                    ToolTipService.ToolTip="Speichern"
+                    Command="{Binding SetSettingsCommand}">
+                    <Button.Content>
+                        <FontIcon Glyph="&#xE73E;" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <RelativePanel
+            x:Name="SEPAPanel"
+            Grid.Column="1">
+            <RelativePanel
+                x:Name="HeaderSection"
+                RelativePanel.AlignTopWithPanel="True">
+                <TextBlock
+                    x:Name="SEPAHeader"
+                    Text="SEPA-Verfahren"
+                    Style="{StaticResource HeaderTextBlockStyle}">
+                </TextBlock>
+                <FontIcon 
+                    RelativePanel.AlignTopWith="SEPAHeader" 
+                    RelativePanel.RightOf="SEPAHeader" 
+                    Glyph="&#xF167;"
+                    ToolTipService.ToolTip="Automatisches einziehen der Mitgliedsbeiträge mittels SEPA-Verfahren">
+                </FontIcon>
+                <TextBlock
+                    x:Name="MembersHeader"
+                    Text="Mitglieder"
+                    RelativePanel.Below="SEPAHeader"
+                    Style="{StaticResource SubheaderTextBlockStyle}">
+                </TextBlock>
+            </RelativePanel>
+
+            <Button
+                Content="Speichern"
+                Style="{StaticResource AccentButtonStyle}"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Above="MembersList"
+                Command="{Binding SaveSepaCommand}">
+            </Button>
+
+            <ItemsView
+                x:Name="MembersList"
+                RelativePanel.Below="HeaderSection"
+                SelectionMode="None"
+                ItemsSource="{Binding Members}">
+                <ItemsView.Layout>
+                    <StackLayout Spacing="20"/>
+                </ItemsView.Layout>
+                <ItemsView.ItemTemplate>
+                    <DataTemplate>
+                        <ItemContainer>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid
+                                    x:Name="MemberGrid"
+                                    Grid.Column="0"
+                                    ColumnSpacing="25">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="1" Grid.Row="0">
+                                        <Run Text="{Binding FirstName}"></Run>
+                                        <Run Text=" "></Run>
+                                        <Run Text="{Binding LastName}"></Run>
+                                    </TextBlock>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Geburtstag" FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding BirthDate}"/>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Beschäftigung" FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding EmploymentType}"/>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="3" Text="IBAN" FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding IBAN}"/>
+
+                                </Grid>
+                                <ToggleSwitch 
+                                    x:Name="EnableSEPA"
+                                    Grid.Column="1"
+                                    Header="Aktiv"
+                                    IsOn="{Binding IsSepaActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                </ToggleSwitch>
+                            </Grid>
+                        </ItemContainer>
+                    </DataTemplate>
+                </ItemsView.ItemTemplate>
+            </ItemsView>
+        </RelativePanel>
+    </Grid>
+</Page>

@@ -150,4 +150,7 @@
   <data name="MemberViewModel" xml:space="preserve">
     <value>Mitglieder</value>
   </data>
+  <data name="SettingsViewModel" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
 </root>

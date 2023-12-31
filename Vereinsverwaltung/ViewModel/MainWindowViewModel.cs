@@ -35,9 +35,15 @@ public partial class MainWindowViewModel : ViewModelBase
         NavigationService.NavigateTo<AccountViewModel>();
     }
 
-    [RelayCommand]
+	[RelayCommand]
     private void NavigateToContributionView()
     {
         NavigationService.NavigateTo<ContributionViewModel>();
+    }
+    
+    [RelayCommand]
+    private void NavigateToSettingsView()
+    {
+        NavigationService.NavigateTo<SettingsViewModel>();
     }
 }

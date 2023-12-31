@@ -12,6 +12,6 @@ public class Member
     public string LastName{ get; set; }
     public string IBAN { get; set; }
     public DateTime BirthDate { get; set; }
-    public double Contribution { get; set; }
     public EmploymentType EmploymentType { get; set; }
+    public bool IsSepaActive { get; set; }
 }

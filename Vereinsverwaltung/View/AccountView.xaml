@@ -32,6 +32,7 @@
                 Text="Kontostand"
                 Style="{StaticResource HeaderTextBlockStyle}">
             </TextBlock>
+            <TextBlock Text="{Binding Iban}" Style="{StaticResource BodyTextBlockStyle}"/>
             <TextBlock 
                 Style="{StaticResource TitleTextBlockStyle}">
                 <Run Text="{Binding Balance}"></Run>

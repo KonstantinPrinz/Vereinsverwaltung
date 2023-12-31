@@ -10,6 +10,8 @@ namespace Vereinsverwaltung.ViewModel;
 public partial class AccountViewModel : ViewModelBase
 {
     [ObservableProperty]
+    private string iban;
+    [ObservableProperty]
     private double balance;
     [ObservableProperty]
     private ObservableCollection<Entry> entries;
@@ -29,6 +31,7 @@ public partial class AccountViewModel : ViewModelBase
         var account = await dataAccessor.Account.Value;
 
         Balance = account.Balance;
+        Iban = account.IBAN;
         Entries = new ObservableCollection<Entry>(account.Entries.OrderByDescending(e => e.TimeStamp));
         
         // initial call to filter entries with the default dates
