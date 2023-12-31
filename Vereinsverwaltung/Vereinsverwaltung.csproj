@@ -20,6 +20,7 @@
     <None Remove="View\CreateMemberView.xaml" />
     <None Remove="View\DashboardView.xaml" />
     <None Remove="View\MemberView.xaml" />
+    <None Remove="View\SettingsView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -88,6 +89,9 @@
     <Resource Remove="View\AccountView.xaml" />
   </ItemGroup>
   <ItemGroup>
+  	<Page Update="View\SettingsView.xaml">
+  		<Generator>MSBuild:Compile</Generator>
+	</Page>
     <Page Update="View\CreateContributionScaleView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

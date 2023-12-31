@@ -46,7 +46,6 @@ public partial class MemberViewModel : ViewModelBase
                 BirthDate = dialogViewModel.BirthDate,
                 FirstName = dialogViewModel.FirstName,
                 LastName = dialogViewModel.LastName,
-                Contribution = dialogViewModel.Contribution,
                 EmploymentType = dialogViewModel.Employment,
                 IBAN = dialogViewModel.Iban,
             };

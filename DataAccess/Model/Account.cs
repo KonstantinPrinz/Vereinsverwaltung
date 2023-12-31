@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace DataAccess.Model;
 public class Account
 {
+    public string IBAN { get; set; }
     public double Balance { get; set; }
 
     public IEnumerable<Entry> Entries { get; set;} = new List<Entry>();

@@ -65,6 +65,18 @@
                         </Interactions:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
                 </NavigationViewItem>
+                <NavigationViewItem
+                    Icon="Setting"
+                    Content="Einstellungen">
+                    <Interactivity:Interaction.Behaviors>
+                        <Interactions:EventTriggerBehavior
+                            EventName="Tapped">
+                            <Interactions:EventTriggerBehavior.Actions>
+                                <Interactions:InvokeCommandAction Command="{Binding NavigateToSettingsViewCommand}"/>
+                            </Interactions:EventTriggerBehavior.Actions>
+                        </Interactions:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
         </NavigationView>
     </Grid>
