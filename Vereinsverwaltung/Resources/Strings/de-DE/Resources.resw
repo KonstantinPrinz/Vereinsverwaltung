@@ -129,10 +129,19 @@
   <data name="ConfirmActionTextBlock.Text" xml:space="preserve">
     <value>Sind Sie sicher, dass Sie diese Aktion ausführen möchten?</value>
   </data>
-  <data name="CreateMemberDialogCloseButton" xml:space="preserve">
+  <data name="ContributionViewModel" xml:space="preserve">
+    <value>Beiträge</value>
+  </data>
+  <data name="CreateContributionScaleDialog.CloseButtonText" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
-  <data name="CreateMemberDialogPrimaryButton" xml:space="preserve">
+  <data name="CreateContributionScaleDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Erstellen</value>
+  </data>
+  <data name="CreateMemberDialog.CloseButtonText" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="CreateMemberDialog.PrimaryButtonText" xml:space="preserve">
     <value>Erstellen</value>
   </data>
   <data name="DashboardViewModel" xml:space="preserve">

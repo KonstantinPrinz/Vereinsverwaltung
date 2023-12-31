@@ -15,9 +15,9 @@ using Windows.Foundation.Collections;
 
 namespace Vereinsverwaltung.View;
 
-public sealed partial class CreateMemberView : ContentDialog
+public sealed partial class ContributionView : Page
 {
-    public CreateMemberView()
+    public ContributionView()
     {
         this.InitializeComponent();
     }

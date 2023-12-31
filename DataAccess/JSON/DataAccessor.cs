@@ -14,15 +14,18 @@ public class DataAccessor
     private readonly string dataPath;
     private readonly string memberFile;
     private readonly string accountFile;
+    private readonly string contributionScalingFile;
 
     public Lazy<Task<List<Member>>> Members { get; private set; }
     public Lazy<Task<Account>> Account { get; private set; }
+    public Lazy<Task<ContributionScaling>> ContributionScale { get; private set; }
 
     public DataAccessor()
     {
         dataPath = AppContext.BaseDirectory + "\\Data\\";
         memberFile = "\\members.json";
         accountFile = "\\account.json";
+        contributionScalingFile = "\\contributionScaling.json";
 
         if (!Directory.Exists(dataPath))
         {
@@ -31,6 +34,7 @@ public class DataAccessor
 
         Members = new Lazy<Task<List<Member>>>(GetMember);
         Account = new Lazy<Task<Account>>(GetAccount);
+        ContributionScale = new Lazy<Task<ContributionScaling>>(GetContributionScale);
     }
 
     /// <summary>
@@ -42,7 +46,7 @@ public class DataAccessor
 
         if (!File.Exists(path))
         {
-            File.Create(path);
+            File.Create(path).Close();
         }
 
         string json;
@@ -53,32 +57,9 @@ public class DataAccessor
 
         var members = JsonConvert.DeserializeObject<List<Member>>(json);
 
-        // example data which can be removed on release ._.
-        if (members == null || members.Count == 0)
+        if (members == null)
         {
-            members = new List<Member>()
-            {
-                new()
-                {
-                    Id = Guid.NewGuid(),
-                    BirthDate = DateTime.Now,
-                    Contribution = 5,
-                    EmploymentType = EmploymentType.Student,
-                    FirstName = "Test1First",
-                    LastName = "Test1Last",
-                    IBAN = "123123123",
-                },
-                new()
-                {
-                    Id = Guid.NewGuid(),
-                    BirthDate = DateTime.Now,
-                    Contribution = 10,
-                    EmploymentType = EmploymentType.FullTimeEmployee,
-                    FirstName = "tEsT2First",
-                    LastName = "tEsT2Last",
-                    IBAN = "456456456",
-                }
-            };
+            members = new List<Member>();
         }
 
         return members;
@@ -108,7 +89,7 @@ public class DataAccessor
 
         if (!File.Exists(path))
         {
-            File.Create(path);
+            File.Create(path).Close();
         }
 
         string json;
@@ -129,62 +110,62 @@ public class DataAccessor
                 {
                     new()
                     {
-                        TimeStamp = DateTime.Now,
+                        TimeStamp = DateTime.Now.Date,
                         Value = 69,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddDays(-5),
+                        TimeStamp = DateTime.Now.AddDays(-5).Date,
                         Value = 666,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddHours(-5),
+                        TimeStamp = DateTime.Now.AddHours(-5).Date,
                         Value = -25,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now,
+                        TimeStamp = DateTime.Now.Date,
                         Value = 69,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddDays(-5),
+                        TimeStamp = DateTime.Now.AddDays(-5).Date,
                         Value = 666,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddHours(-5),
+                        TimeStamp = DateTime.Now.AddHours(-5).Date,
                         Value = -25,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now,
+                        TimeStamp = DateTime.Now.Date,
                         Value = 69,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddDays(-5),
+                        TimeStamp = DateTime.Now.AddDays(-5).Date,
                         Value = 666,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddHours(-5),
+                        TimeStamp = DateTime.Now.AddHours(-5).Date,
                         Value = -25,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now,
+                        TimeStamp = DateTime.Now.Date,
                         Value = 69,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddDays(-5),
+                        TimeStamp = DateTime.Now.AddDays(-5).Date,
                         Value = 666,
                     },
                     new()
                     {
-                        TimeStamp = DateTime.Now.AddHours(-5),
+                        TimeStamp = DateTime.Now.AddHours(-5).Date,
                         Value = -25,
                     }
                 }
@@ -207,5 +188,48 @@ public class DataAccessor
         var json = JsonConvert.SerializeObject(account);
 
         await File.WriteAllTextAsync(dataPath + accountFile, json);
+    }
+
+    /// <summary>
+    /// Deserializes and returns the contribution scaling in the applications base directory from JSON.
+    /// </summary>
+    private async Task<ContributionScaling> GetContributionScale()
+    {
+        var path = dataPath + contributionScalingFile;
+
+        if (!File.Exists(path))
+        {
+            File.Create(path).Close();
+        }
+
+        string json;
+        using (StreamReader r = new StreamReader(path))
+        {
+            json = await r.ReadToEndAsync();
+        }
+
+        var contributionScaling = JsonConvert.DeserializeObject<ContributionScaling>(json);
+
+        if (contributionScaling == null)
+        {
+            contributionScaling = new ContributionScaling();
+        }
+
+        return contributionScaling;
+    }
+
+    /// <summary>
+    /// Serializes the contribution scaling to the applications base directory as JSON.
+    /// </summary>
+    public async Task SetContributionScaling(ContributionScaling contributionScaling)
+    {
+        if (!Directory.Exists(dataPath))
+        {
+            Directory.CreateDirectory(dataPath);
+        }
+
+        var json = JsonConvert.SerializeObject(contributionScaling);
+
+        await File.WriteAllTextAsync(dataPath + contributionScalingFile, json);
     }
 }

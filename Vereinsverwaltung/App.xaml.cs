@@ -43,6 +43,8 @@ public partial class App : Application
         services.AddTransient<CreateMemberView>();
         services.AddTransient<ConfirmActionView>();
         services.AddTransient<AccountView>();
+        services.AddTransient<ContributionView>();
+        services.AddTransient<CreateContributionScaleView>();
         #endregion
 
         #region ViewModel
@@ -52,6 +54,8 @@ public partial class App : Application
         services.AddTransient<CreateMemberViewModel>();
         services.AddTransient<ConfirmActionViewModel>();
         services.AddTransient<AccountViewModel>();
+        services.AddTransient<ContributionViewModel>();
+        services.AddTransient<CreateContributionScaleViewModel>();
         #endregion ViewModel
 
         services.AddSingleton<DataAccessor>();
