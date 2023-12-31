@@ -14,15 +14,18 @@ public class DataAccessor
     private readonly string dataPath;
     private readonly string memberFile;
     private readonly string accountFile;
+    private readonly string contributionScalingFile;
 
     public Lazy<Task<List<Member>>> Members { get; private set; }
     public Lazy<Task<Account>> Account { get; private set; }
+    public Lazy<Task<ContributionScaling>> ContributionScale { get; private set; }
 
     public DataAccessor()
     {
         dataPath = AppContext.BaseDirectory + "\\Data\\";
         memberFile = "\\members.json";
         accountFile = "\\account.json";
+        contributionScalingFile = "\\contributionScaling.json";
 
         if (!Directory.Exists(dataPath))
         {
@@ -31,6 +34,7 @@ public class DataAccessor
 
         Members = new Lazy<Task<List<Member>>>(GetMember);
         Account = new Lazy<Task<Account>>(GetAccount);
+        ContributionScale = new Lazy<Task<ContributionScaling>>(GetContributionScale);
     }
 
     /// <summary>
@@ -207,5 +211,75 @@ public class DataAccessor
         var json = JsonConvert.SerializeObject(account);
 
         await File.WriteAllTextAsync(dataPath + accountFile, json);
+    }
+
+    /// <summary>
+    /// Deserializes and returns the contribution scaling in the applications base directory from JSON.
+    /// </summary>
+    private async Task<ContributionScaling> GetContributionScale()
+    {
+        var path = dataPath + contributionScalingFile;
+
+        if (!File.Exists(path))
+        {
+            File.Create(path);
+        }
+
+        string json;
+        using (StreamReader r = new StreamReader(path))
+        {
+            json = await r.ReadToEndAsync();
+        }
+
+        var contributionScaling = JsonConvert.DeserializeObject<ContributionScaling>(json);
+
+        // example data which can be removed on release ._.
+        if (contributionScaling == null)
+        {
+            contributionScaling = new()
+            {
+                Items = new List<ContributionScaleItem>()
+                {
+                    new()
+                    {
+                        Employment = EmploymentType.Student,
+                        MinAge = 12,
+                        MaxAge = 29,
+                        Contribution = 5,
+                    },
+                    new()
+                    {
+                        Employment = EmploymentType.FullTimeEmployee,
+                        MinAge = 16,
+                        MaxAge = 29,
+                        Contribution = 10,
+                    },
+                    new()
+                    {
+                        Employment = EmploymentType.FullTimeEmployee,
+                        MinAge = 30,
+                        MaxAge = 999,
+                        Contribution = 20,
+                    },
+                }
+            };
+        }
+
+        return contributionScaling;
+    }
+
+    /// <summary>
+    /// Serializes the contribution scaling to the applications base directory as JSON.
+    /// </summary>
+    public async Task SetContributionScaling(ContributionScaling contributionScaling)
+    {
+        if (!Directory.Exists(dataPath))
+        {
+            Directory.CreateDirectory(dataPath);
+        }
+
+        var json = JsonConvert.SerializeObject(contributionScaling);
+
+        await File.WriteAllTextAsync(dataPath + contributionScalingFile, json);
     }
 }
