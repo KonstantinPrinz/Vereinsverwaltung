@@ -13,5 +13,4 @@ public class Member
     public string IBAN { get; set; }
     public DateTime BirthDate { get; set; }
     public EmploymentType EmploymentType { get; set; }
-    public bool IsSepaActive { get; set; }
 }

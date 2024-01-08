@@ -34,10 +34,4 @@ public partial class SettingsViewModel : ViewModelBase
         account.IBAN = Iban;
         await dataAccessor.SetAccount(account);
     }
-
-    [RelayCommand]
-    private async Task SaveSepa()
-    {
-        await dataAccessor.SetMembers(Members.ToList());
-    }
 }

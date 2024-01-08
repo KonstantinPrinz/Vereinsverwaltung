@@ -77,14 +77,6 @@
                 </TextBlock>
             </RelativePanel>
 
-            <Button
-                Content="Speichern"
-                Style="{StaticResource AccentButtonStyle}"
-                RelativePanel.AlignRightWithPanel="True"
-                RelativePanel.Above="MembersList"
-                Command="{Binding SaveSepaCommand}">
-            </Button>
-
             <ItemsView
                 x:Name="MembersList"
                 RelativePanel.Below="HeaderSection"
@@ -134,12 +126,6 @@
                                     <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding IBAN}"/>
 
                                 </Grid>
-                                <ToggleSwitch 
-                                    x:Name="EnableSEPA"
-                                    Grid.Column="1"
-                                    Header="Aktiv"
-                                    IsOn="{Binding IsSepaActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                </ToggleSwitch>
                             </Grid>
                         </ItemContainer>
                     </DataTemplate>
