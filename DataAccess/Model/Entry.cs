@@ -8,6 +8,5 @@ namespace DataAccess.Model;
 public class Entry
 {
     public DateTime TimeStamp { get; set; }
-
     public double Value { get; set; }
 }
